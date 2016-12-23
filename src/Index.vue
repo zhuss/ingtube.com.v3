@@ -1,22 +1,22 @@
 <template>
   <div id="app">
+    <!--top-->
     <div class="top">
+      <!--pc端video-->
       <div class="video">
         <video autoplay="autoplay" loop="true" :src="videoUrl" webkit-playsinline="false" playsinline="false">
         </video>
       </div>
+      <!--pc端video end-->
+      <!--mobile端 图片-->
       <div class="bg-ms">
         <transition name="tran" v-for="(item,index) in imgUrls">
           <img v-show="imgIndex==index" :src="item" />
         </transition>
       </div>
+      <!--mobile端 图片-->
       <!--nav-->
-      <div class="nav">
-        <ul>
-          <li><a class="active" href="#">首页</a></li>
-          <li><a href="about.html">关于</a></li>
-        </ul>
-      </div>
+      <navbar></navbar>
       <!--nav end-->
       <!--icon-->
       <div class="icon">
@@ -34,6 +34,7 @@
       </div>
       <!--logo-->
     </div>
+    <!--topend-->
     <!--main-->
     <div class="main">
       <div class="card">
@@ -59,10 +60,7 @@
     </div>
     <!--main-->
     <!--footer-->
-    <div class="footer">
-      <p>© 2016 映兔科技. All rights reserved</p>
-      <p>杭ICP备08104990号</p>
-    </div>
+    <bottom></bottom>
     <!--footer end-->
     <!--model-->
     <transition name="fade">
@@ -81,30 +79,41 @@
 <script>
 require('assets/css/common.css')
 
+import Bottom from './components/Bottom'
+import Navbar from './components/Navbar'
+
+
 export default {
+  components: {
+    Bottom,
+    Navbar
+  },
   data() {
-      return {
-        isShowQrcode: false,
-        imgIndex: 0,
-        videoUrl: "http://static.kaiyanapp.com/eyepetizer-web/homepage.mp4",
-        imgUrls: ["http://static.kaiyanapp.com/eyepetizer-web/assets/images/index/home_bk_7.8b2d29b4.jpg", "http://static.kaiyanapp.com/eyepetizer-web/assets/images/index/home_bk_5.c48e7769.jpg"]
-      }
-    },
-    mounted() {
-      var self = this;
-      setInterval(function() {
-        if (self.imgIndex < self.imgUrls.length - 1) {
-          self.imgIndex++;
-        } else {
-          self.imgIndex = 0;
-        }
-      }, 10000)
+    return {
+      isShowQrcode: false,
+      imgIndex: 0,
+      videoUrl: "http://static.kaiyanapp.com/eyepetizer-web/homepage.mp4",
+      imgUrls: ["http://static.kaiyanapp.com/eyepetizer-web/assets/images/index/home_bk_7.8b2d29b4.jpg", "http://static.kaiyanapp.com/eyepetizer-web/assets/images/index/home_bk_5.c48e7769.jpg"]
     }
+  },
+  mounted() {
+    var self = this;
+    setInterval(function() {
+      if (self.imgIndex < self.imgUrls.length - 1) {
+        self.imgIndex++;
+      } else {
+        self.imgIndex = 0;
+      }
+    }, 10000)
+  }
 }
 </script>
 <style>
 .fade-enter-active,
 .fade-leave-active {
+  -ms-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
   -webkit-transition: all .5s;
   transition: all .5s;
 }
@@ -112,6 +121,10 @@ export default {
 .fade-enter,
 .fade-leave-active {
   opacity: 0;
+  -ms-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
 
@@ -120,6 +133,9 @@ export default {
 
 .tran-enter-active,
 .tran-leave-active {
+  -ms-transition: opacity .5s;
+  -moz-transition: opacity .5s;
+  -o-transition: opacity .5s;
   -webkit-transition: opacity .5s;
   transition: opacity .5s;
 }
@@ -153,6 +169,9 @@ export default {
   min-height: 100%;
   min-width: 100%;
   position: absolute;
+  -ms-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
@@ -162,35 +181,6 @@ export default {
   width: 100%;
   height: 100%;
   display: none;
-}
-
-.nav {
-  width: 130px;
-  position: absolute;
-  top: 32px;
-  right: 220px;
-}
-
-.nav ul {
-  width: 130px;
-  height: 24px;
-  line-height: 24px;
-}
-
-.nav ul li {
-  float: left;
-}
-
-.nav a {
-  color: rgba(255, 255, 255, .3);
-}
-
-.nav a.active {
-  color: rgba(255, 255, 255, 1);
-}
-
-.nav ul li:first-child {
-  margin-right: 74px;
 }
 
 .icon {
@@ -210,6 +200,10 @@ export default {
   position: relative;
   top: 50%;
   left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 172px;
   padding-top: 328px;
@@ -241,11 +235,12 @@ export default {
 }
 
 .main {
-  width: 80%;
+  width: 1000px;
   height: auto;
   overflow: hidden;
   margin: 0 auto;
   padding-bottom: 60px;
+  background: #FFF;
 }
 
 .main .card {
@@ -276,24 +271,6 @@ export default {
   line-height: 18px;
 }
 
-.footer {
-  width: 100%;
-  padding: 23px 0;
-  background: #242424;
-  color: rgba(255, 255, 255, .5);
-  font-size: 14px;
-  line-height: 18px;
-  overflow: hidden;
-  font-weight: 100;
-}
-
-.footer p {
-  width: 50%;
-  float: left;
-  text-align: center;
-  font-weight: 100;
-}
-
 .model {
   position: fixed;
   top: 0;
@@ -314,6 +291,10 @@ export default {
   position: absolute;
   left: 50%;
   top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   background: #FFF;
   width: 260px;
@@ -340,6 +321,12 @@ export default {
   margin-top: 30px;
 }
 
+@media screen and (max-width: 1000px) {
+  .main {
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 750px) {
   .video {
     display: none;
@@ -347,14 +334,26 @@ export default {
   .bg-ms {
     position: absolute;
     display: block;
+    -ms-animation: scale 10s ease-in-out infinite;
+    -moz-animation: scale 10s ease-in-out infinite;
+    -o-animation: scale 10s ease-in-out infinite;
+    -webkit-animation: scale 10s ease-in-out infinite;
     animation: scale 10s ease-in-out infinite;
     z-index: -1;
   }
   @keyframes scale {
     from {
+      -ms-transform: scale(1);
+      -moz-transform: scale(1);
+      -o-transform: scale(1);
+      -webkit-transform: scale(1);
       transform: scale(1);
     }
     to {
+      -ms-transform: scale(1.2);
+      -moz-transform: scale(1.2);
+      -o-transform: scale(1.2);
+      -webkit-transform: scale(1.2);
       transform: scale(1.2);
     }
   }
@@ -366,22 +365,15 @@ export default {
     min-width: 100%;
     min-height: 100%;
   }
-  .nav {
-    width: 100%;
-    height: 24px;
-    padding: 13px 0;
-    background: rgba(0, 0, 0, .2);
-    top: 0;
-    right: 0;
-  }
-  .nav ul {
-    margin: 0 auto;
-  }
   .icon {
     width: 87px;
     height: 87px;
     top: 20%;
     left: 50%;
+    -ms-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
   }
   .logo {
@@ -401,9 +393,6 @@ export default {
   }
   .main .card {
     width: 50%;
-  }
-  .footer p {
-    width: 100%;
   }
 }
 </style>

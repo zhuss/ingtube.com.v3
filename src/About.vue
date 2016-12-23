@@ -5,12 +5,7 @@
         <img src="./assets/img/bg.jpg" />
       </div>
       <!--nav-->
-      <div class="nav">
-        <ul>
-          <li><a href="index.html">首页</a></li>
-          <li><a class="active" href="#">关于</a></li>
-        </ul>
-      </div>
+      <navbar :active="'about'"></navbar>
       <!--nav end-->
       <!--icon-->
       <div class="icon">
@@ -30,7 +25,7 @@
           <img src="./assets/img/pic1.png" />
           <img src="./assets/img/pic2.png" />
           <img src="./assets/img/pic3.png" />
-          <img src="./assets/img/pic4.png" />
+          <img @click="goLofter" style="cursor: pointer;" src="./assets/img/pic4.png" />
         </div>
       </div>
       <!--pic end-->
@@ -40,7 +35,7 @@
       <div class="concat-bg"></div>
       <div class="concat">
         <h2>咖啡供应</br>欢迎来映兔坐坐</h2>
-        <p>杭州市西湖区崇义路郡原公元里13幢3楼</p>
+        <p>杭州市西湖区龙头坝街19号郡原公元里7幢301室</p>
         <p>0571-83489234</p>
         <p>business@ingtube.com</p>
         <p>support@ingtube.com</p>
@@ -48,10 +43,7 @@
     </div>
     <!--main end-->
     <!--footer-->
-    <div class="footer">
-      <p>© 2016 映兔科技. All rights reserved</p>
-      <p>杭ICP备08104990号</p>
-    </div>
+    <bottom></bottom>
     <!--footer end-->
     <!--model-->
     <transition name="fade">
@@ -69,14 +61,15 @@
             <p>我们以 Google 的技术标准要求自己，鼓励使用新技术、鼓励重新造轮子、鼓励全栈。</p>
             <p>我们实行 OKR 制度，强调自我驱动和扁平管理。</p>
             <p>我们的工作领域：</p>
-            <p>· 机器学习：深度学习在图像、语音、NLP上的应用VR/AR 技术</p>
-            <p>· 后端技术：包括微服务、kubernetes、DevOps、CI/CD、搜索推荐、即时通讯、数据监控和报警</p>
-            <p>· 前端技术：iOS、Android、H5 的新技术</p>
-            <p>· 音视频技术：编解码、传输和直播技术</p>
+            <p>机器学习：深度学习在图像、语音、NLP上的应用VR/AR 技术</p>
+            <p>后端技术：微服务、kubernetes、DevOps、CI/CD、搜索推荐、即时通讯、数据监控和报警</p>
+            <p>前端技术：iOS、Android、H5 的新技术</p>
+            <p>音视频技术：编解码、传输和直播技术</p>
             <p>搜索 “映兔技术团队” 关注我们的微信公众号。</p>
           </div>
           <div class="teaminfo" v-show="index ==2">
-            <p>我们来自阿里巴巴、腾讯、网易等公司，专注于服务商业的产品、交互与视觉设计，目标是创造出移动营销时代的优秀产品。视频与直播、本地生活、社交、AR&VR都是我们的研究领域，如果你也对以上领域感兴趣，欢迎加入。</p>
+            <p>我们来自阿里巴巴、腾讯、网易等公司，专注于服务商业的产品、交互与视觉设计，目标是创造出移动营销时代的优秀产品。</p>
+            <p>视频与直播、本地生活、社交、AR&VR都是我们的研究领域，如果你也对以上领域感兴趣，欢迎加入。</p>
           </div>
           <div class="teaminfo" v-show="index ==3">
             <p>拳怕少壮，我们是一群来自各大互联网公司一线运营岗位的年轻90后团队。专注于服务b端商家和c端用户，营造更舒适的体验和更精准的营销！团队塑造简单工作，高效运作的理念，力争在谈笑间开疆拓土。如果你也是一个厌倦了戴上枷锁跳舞的工作方式，向往自由free的工作氛围，欢迎加入我们。 </p>
@@ -93,19 +86,35 @@
 </template>
 <script>
 require('assets/css/common.css')
+import Bottom from './components/Bottom'
+import Navbar from './components/Navbar'
 
 export default {
+  components: {
+    Bottom,
+    Navbar
+  },
   data() {
     return {
       isShowModel: false,
       index: 1
     }
+  },
+  methods: {
+    goLofter() {
+      window.open('http://ingtube.lofter.com', '_new');
+    }
   }
 }
 </script>
 <style>
+/*显示动效*/
+
 .fade-enter-active,
 .fade-leave-active {
+  -ms-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
   -webkit-transition: all .5s;
   transition: all .5s;
 }
@@ -113,6 +122,10 @@ export default {
 .fade-enter,
 .fade-leave-active {
   opacity: 0;
+  -ms-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
 
@@ -141,35 +154,6 @@ export default {
   object-fit: cover;
 }
 
-.nav {
-  width: 130px;
-  position: absolute;
-  top: 32px;
-  right: 220px;
-}
-
-.nav ul {
-  width: 130px;
-  height: 24px;
-  line-height: 24px;
-}
-
-.nav ul li {
-  float: left;
-}
-
-.nav a {
-  color: rgba(255, 255, 255, .3);
-}
-
-.nav a.active {
-  color: rgba(255, 255, 255, 1);
-}
-
-.nav ul li:first-child {
-  margin-right: 74px;
-}
-
 .icon {
   position: absolute;
   left: 220px;
@@ -187,6 +171,10 @@ export default {
   position: absolute;
   left: 50%;
   top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 504px;
   margin-top: -50px;
@@ -225,6 +213,10 @@ export default {
 
 .pic {
   left: 50%;
+  -ms-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   width: 784px;
   position: absolute;
@@ -253,6 +245,10 @@ export default {
 .concat-bg {
   position: absolute;
   left: 50%;
+  -ms-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   width: 396px;
   height: 396px;
@@ -279,24 +275,6 @@ export default {
   line-height: 20px;
 }
 
-.footer {
-  width: 100%;
-  padding: 23px 0;
-  background: #242424;
-  color: rgba(255, 255, 255, .5);
-  font-size: 14px;
-  line-height: 18px;
-  overflow: hidden;
-  font-weight: 100;
-}
-
-.footer p {
-  width: 50%;
-  float: left;
-  text-align: center;
-  font-weight: 100;
-}
-
 .model {
   position: fixed;
   top: 0;
@@ -317,6 +295,10 @@ export default {
   position: absolute;
   left: 50%;
   top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   background: #FFF;
   padding: 28px 130px 36px 40px;
@@ -349,6 +331,7 @@ export default {
   color: #AEAEAE;
   border-bottom: 3px solid #FFF;
   cursor: pointer;
+  transition: all .5s;
 }
 
 .model-content ul li.active {
@@ -360,9 +343,13 @@ export default {
   color: #AEAEAE;
   font-size: 12px;
   line-height: 17px;
-  width: 350px;
+  width: 500px;
   height: 217px;
   overflow: hidden;
+}
+
+.teaminfo p {
+  padding-bottom: 5px;
 }
 
 .model-content .email {
@@ -370,18 +357,18 @@ export default {
   line-height: 20px;
 }
 
-@media screen and (max-width: 750px) {
-  .nav {
+@media screen and (max-width: 784px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  .pic {
+    -webkit-overflow-scrolling: touch;
     width: 100%;
-    height: 24px;
-    padding: 13px 0;
-    background: rgba(0, 0, 0, .2);
-    top: 0;
-    right: 0;
+    overflow-x: scroll;
   }
-  .nav ul {
-    margin: 0 auto;
-  }
+}
+
+@media screen and (max-width: 750px) {
   .icon {
     display: none;
   }
@@ -394,11 +381,12 @@ export default {
     margin-right: auto;
     font-size: 28px;
     line-height: 37px;
-    font-weight: bolder;
+    font-weight: 500;
     margin-bottom: 18px;
   }
   .info p {
     margin-bottom: 30px;
+    font-weight: normal;
   }
   ::-webkit-scrollbar {
     display: none;
@@ -415,9 +403,6 @@ export default {
   .concat {
     padding: 79px 0 100px;
   }
-  .footer p {
-    width: 100%;
-  }
   .model .model-content {
     width: 280px;
     padding-left: 10px;
@@ -425,6 +410,9 @@ export default {
   }
   .model-content .teaminfo {
     width: 100%;
+  }
+  .teaminfo p {
+    padding-bottom: 0;
   }
   .model-content .email {
     padding-top: 10px;
