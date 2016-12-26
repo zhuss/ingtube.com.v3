@@ -95,8 +95,10 @@ export default {
       videoUrl: "http://pv.yingtu.co/video/b498f429-2c31-4a7e-b49f-409bafbc6408.mp4",
       //"http://cdn.bunny-tech.com/promotion/static/act-videos/ingtube.mp4",  
       imgUrls: [
-        "http://static.kaiyanapp.com/eyepetizer-web/assets/images/index/home_bk_7.8b2d29b4.jpg",
-        "http://static.kaiyanapp.com/eyepetizer-web/assets/images/index/home_bk_5.c48e7769.jpg"
+        "http://cdn.bunny-tech.com/promotion/static/act-imags/pic01.jpg",
+        "http://cdn.bunny-tech.com/promotion/static/act-imags/pic02.jpg",
+        "http://cdn.bunny-tech.com/promotion/static/act-imags/pic03.jpg",
+        "http://cdn.bunny-tech.com/promotion/static/act-imags/pic04.jpg"
       ]
     }
   },
@@ -110,7 +112,7 @@ export default {
       } else {
         self.imgIndex = 0;
       }
-    }, 10000)
+    }, 5000)
   }
 }
 </script>
@@ -139,11 +141,11 @@ export default {
 
 .tran-enter-active,
 .tran-leave-active {
-  -ms-transition: opacity .5s;
-  -moz-transition: opacity .5s;
-  -o-transition: opacity .5s;
-  -webkit-transition: opacity .5s;
-  transition: opacity .5s;
+  -ms-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
 }
 
 .tran-enter,
@@ -341,12 +343,13 @@ export default {
   .bg-ms {
     position: absolute;
     display: block;
-    -ms-animation: scale 10s ease-in-out infinite;
+    /*-ms-animation: scale 10s ease-in-out infinite;
     -moz-animation: scale 10s ease-in-out infinite;
     -o-animation: scale 10s ease-in-out infinite;
     -webkit-animation: scale 10s ease-in-out infinite;
-    animation: scale 10s ease-in-out infinite;
+    animation: scale 10s ease-in-out infinite;*/
     z-index: -1;
+    background: #000;
   }
   @keyframes scale {
     from {
@@ -366,11 +369,17 @@ export default {
   }
   .bg-ms img {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     display: block;
-    min-width: 100%;
-    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .icon {
     width: 87px;
