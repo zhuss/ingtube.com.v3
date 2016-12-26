@@ -4,7 +4,7 @@
     <div class="top">
       <!--pc端video-->
       <div class="video">
-        <video autoplay="autoplay" loop="true" :src="videoUrl" webkit-playsinline="false" playsinline="false">
+        <video id="video" autoplay="autoplay" loop="true" :src="videoUrl" webkit-playsinline="false" playsinline="false">
         </video>
       </div>
       <!--pc端video end-->
@@ -92,11 +92,17 @@ export default {
     return {
       isShowQrcode: false,
       imgIndex: 0,
-      videoUrl: "http://static.kaiyanapp.com/eyepetizer-web/homepage.mp4",
-      imgUrls: ["http://static.kaiyanapp.com/eyepetizer-web/assets/images/index/home_bk_7.8b2d29b4.jpg", "http://static.kaiyanapp.com/eyepetizer-web/assets/images/index/home_bk_5.c48e7769.jpg"]
+      videoUrl: "http://pv.yingtu.co/video/b498f429-2c31-4a7e-b49f-409bafbc6408.mp4",
+      //"http://cdn.bunny-tech.com/promotion/static/act-videos/ingtube.mp4",  
+      imgUrls: [
+        "http://static.kaiyanapp.com/eyepetizer-web/assets/images/index/home_bk_7.8b2d29b4.jpg",
+        "http://static.kaiyanapp.com/eyepetizer-web/assets/images/index/home_bk_5.c48e7769.jpg"
+      ]
     }
   },
   mounted() {
+    //设置静音
+    document.getElementById("video").muted = true;
     var self = this;
     setInterval(function() {
       if (self.imgIndex < self.imgUrls.length - 1) {
@@ -162,6 +168,7 @@ export default {
   height: 100%;
   z-index: -1;
   display: block;
+  background: #000;
 }
 
 .video video {
