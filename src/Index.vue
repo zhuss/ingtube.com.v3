@@ -33,6 +33,11 @@
         <!--btn end-->
       </div>
       <!--logo-->
+      <!--more-->
+      <div class="more">
+        <img class="icon-more" src="./assets/img/more.png" />
+      </div>
+      <!--more end-->
     </div>
     <!--topend-->
     <!--main-->
@@ -92,8 +97,8 @@ export default {
     return {
       isShowQrcode: false,
       imgIndex: 0,
-      videoUrl: "http://pv.yingtu.co/video/b498f429-2c31-4a7e-b49f-409bafbc6408.mp4",
-      //"http://cdn.bunny-tech.com/promotion/static/act-videos/ingtube.mp4",  
+      videoUrl: "http://cdn.bunny-tech.com/promotion/static/act-videos/ingtube.mp4",
+      //"http://pv.yingtu.co/video/b498f429-2c31-4a7e-b49f-409bafbc6408.mp4",
       imgUrls: [
         "http://cdn.bunny-tech.com/promotion/static/act-imags/pic01.jpg",
         "http://cdn.bunny-tech.com/promotion/static/act-imags/pic02.jpg",
@@ -207,7 +212,7 @@ export default {
 
 .logo {
   position: relative;
-  top: 50%;
+  top: 45%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -241,6 +246,41 @@ export default {
 
 .btn-ms {
   display: none;
+}
+
+.more {
+  width: 32px;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.icon-more {
+  display: block;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 0;
+  -ms-animation: more .8s linear infinite;
+  -moz-animation: more .8s linear infinite;
+  -o-animation: more .8s linear infinite;
+  -webkit-animation: more .8s linear infinite;
+  animation: more .8s linear alternate infinite;
+}
+
+@keyframes more {
+  from {
+    top: 0px;
+  }
+  to {
+    top: 15px;
+  }
 }
 
 .main {
