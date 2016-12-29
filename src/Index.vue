@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div class="hint" :class="isOpenHint?'open':'close'">点击右上角···用默认浏览器打开</div>
     <!--top-->
     <div class="top">
       <!--pc端video-->
@@ -28,7 +29,7 @@
         <!--btn-->
         <div class="btn-down">
           <a class="btn-pc" href="javascript:;" @click="isShowQrcode = true">下载客户端</a>
-          <a class="btn-ms" href="#">下载客户端</a>
+          <a class="btn-ms" href="javascript:;" @click="installApp">下载客户端</a>
         </div>
         <!--btn end-->
       </div>
@@ -87,6 +88,8 @@ require('assets/css/common.css')
 import Bottom from './components/Bottom'
 import Navbar from './components/Navbar'
 
+var inWX = navigator.userAgent.toLowerCase().indexOf('micromessenger') != -1;
+var isIPhone = navigator.userAgent.toLowerCase().indexOf('iphone') != -1;
 
 export default {
   components: {
@@ -104,7 +107,8 @@ export default {
         "http://cdn.bunny-tech.com/promotion/static/act-imags/pic02.jpg",
         "http://cdn.bunny-tech.com/promotion/static/act-imags/pic03.jpg",
         "http://cdn.bunny-tech.com/promotion/static/act-imags/pic04.jpg"
-      ]
+      ],
+      isOpenHint: false
     }
   },
   mounted() {
@@ -118,6 +122,25 @@ export default {
         self.imgIndex = 0;
       }
     }, 5000)
+  },
+  methods: {
+    installApp() {
+      if (inWX) {
+        var self = this;
+        this.isOpenHint = true;
+        setTimeout(function() {
+          self.isOpenHint = false;
+        }, 2000);
+      } else {
+        if (isIPhone) {
+          //ios应用
+          location.href = "https://itunes.apple.com/cn/app/ying-tu/id1118660214";
+        } else {
+          //andriod应用 小米市场
+          location.href = "http://app.xiaomi.com/details?id=com.ingtube.yingtu&back=true&ref=mobileWeb";
+        }
+      }
+    }
   }
 }
 </script>
@@ -160,6 +183,26 @@ export default {
 
 #app {
   height: 100%;
+}
+
+.hint {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: #F8CA03;
+  z-index: 1000;
+  transition: top .5s;
+  top: -50px;
+}
+
+.open {
+  top: 0px;
+}
+
+.close {
+  top: -50px;
 }
 
 .top {
