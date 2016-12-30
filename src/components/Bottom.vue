@@ -13,11 +13,9 @@
   width: 100%;
   padding: 23px 0;
   background: #242424;
-  color: rgba(255, 255, 255, .5);
   font-size: 14px;
   line-height: 18px;
   overflow: hidden;
-  font-weight: 100;
 }
 
 .copy {
@@ -31,9 +29,9 @@
   width: 50%;
   float: left;
   text-align: left;
-  font-weight: 100;
   box-sizing: border-box;
   padding-left: 50px;
+  color: rgba(255, 255, 255, .3);
 }
 
 .footer p:last-child {

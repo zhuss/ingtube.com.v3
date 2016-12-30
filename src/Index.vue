@@ -108,7 +108,8 @@ export default {
         "http://cdn.bunny-tech.com/promotion/static/act-imags/pic03.jpg",
         "http://cdn.bunny-tech.com/promotion/static/act-imags/pic04.jpg"
       ],
-      isOpenHint: false
+      isOpenHint: false,
+      width: 0
     }
   },
   mounted() {
@@ -121,7 +122,8 @@ export default {
       } else {
         self.imgIndex = 0;
       }
-    }, 5000)
+
+    }, 3000)
   },
   methods: {
     installApp() {
@@ -492,6 +494,28 @@ export default {
   }
   .main .card {
     width: 50%;
+  }
+  .more {
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .icon {
+    width: 70px;
+    height: 70px;
+  }
+  .logo {
+    padding-top: 140px;
+    background-size: 120px;
+  }
+  .btn-ms {
+    width: 130px;
+    height: 40px;
+    border-radius: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    margin: 0 auto;
   }
 }
 </style>

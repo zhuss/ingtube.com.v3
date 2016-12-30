@@ -209,6 +209,7 @@ export default {
   line-height: 48px;
   border-radius: 48px;
   margin: 0 auto;
+  font-weight: 500;
 }
 
 .pic {
@@ -307,7 +308,7 @@ export default {
 .model-content .close {
   position: absolute;
   right: 24px;
-  top: 24px;
+  top: 30px;
   width: 16px;
   height: 16px;
 }
@@ -344,7 +345,7 @@ export default {
   font-size: 12px;
   line-height: 17px;
   width: 500px;
-  height: 217px;
+  height: 230px;
   overflow: hidden;
 }
 
@@ -404,9 +405,12 @@ export default {
     padding: 79px 0 100px;
   }
   .model .model-content {
-    width: 280px;
-    padding-left: 10px;
-    padding-right: 10px;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: justify;
   }
   .model-content .teaminfo {
     width: 100%;
@@ -416,6 +420,29 @@ export default {
   }
   .model-content .email {
     padding-top: 10px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .info {}
+  .info h2 {
+    height: 28px;
+    line-height: 28px;
+    font-size: 20px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .info p {
+    font-size: 12px;
+    line-height: 17px;
+    margin-bottom: 15px;
+  }
+  .info .btn {
+    width: 130px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 40px;
+    font-size: 16px;
   }
 }
 </style>
