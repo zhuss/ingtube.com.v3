@@ -128,18 +128,14 @@ export default {
   methods: {
     installApp() {
       if (inWX) {
-        var self = this;
-        this.isOpenHint = true;
-        setTimeout(function() {
-          self.isOpenHint = false;
-        }, 2000);
+        location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.ingtube.yingtu";
       } else {
         if (isIPhone) {
           //ios应用
           location.href = "https://itunes.apple.com/cn/app/ying-tu/id1118660214";
         } else {
-          //andriod应用 小米市场
-          location.href = "http://app.xiaomi.com/details?id=com.ingtube.yingtu&back=true&ref=mobileWeb";
+          //安卓apk包
+          location.href = "http://pv.yingtu.co/android/yingtu.apk";
         }
       }
     }
