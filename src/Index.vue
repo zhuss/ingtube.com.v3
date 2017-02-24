@@ -49,9 +49,9 @@
         <p>发现精彩主题</br>聚合全网海量视频</p>
       </div>
       <div class="card">
-        <img src="./assets/img/icon-tu.png" />
-        <h2>兔子洞</h2>
-        <p>每天更新你喜欢</br>的精彩视频</p>
+        <img src="./assets/img/icon-book.png" />
+        <h2>精选视频杂志</h2>
+        <p>精心挑选的内容</br>订阅你感兴趣的视频</p>
       </div>
       <div class="card">
         <img src="./assets/img/icon-push.png" />
@@ -59,9 +59,9 @@
         <p>开启即时推送</br>不错过任何新视频</p>
       </div>
       <div class="card">
-        <img src="./assets/img/icon-tv.png" />
-        <h2>映兔TV</h2>
-        <p>懒人必备</br>你的专属移动电视</p>
+        <img src="./assets/img/icon-calendar.png" />
+        <h2>每日一签</h2>
+        <p>每天都有新感受</br>分享你的情绪和态度</p>
       </div>
     </div>
     <!--main-->
