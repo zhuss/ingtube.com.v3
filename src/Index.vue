@@ -101,7 +101,6 @@ export default {
       isShowQrcode: false,
       imgIndex: 0,
       videoUrl: "http://cdn.bunny-tech.com/promotion/static/act-videos/ingtube.mp4",
-      //"http://pv.yingtu.co/video/b498f429-2c31-4a7e-b49f-409bafbc6408.mp4",
       imgUrls: [
         "http://cdn.bunny-tech.com/promotion/static/act-imags/pic01.jpg",
         "http://cdn.bunny-tech.com/promotion/static/act-imags/pic02.jpg",
@@ -135,7 +134,7 @@ export default {
           location.href = "https://itunes.apple.com/cn/app/ying-tu/id1118660214";
         } else {
           //安卓apk包
-          location.href = "http://pv.yingtu.co/android/yingtu.apk";
+          location.href = "http://m.yingtu.co/android/yingtu.apk";
         }
       }
     }
