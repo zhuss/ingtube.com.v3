@@ -4,7 +4,7 @@
     <ul>
       <li><a :class="active=='index'?'active':''" href="index.html">首页</a></li>
       <li><a :class="active=='about'?'active':''" href="about.html">关于</a></li>
-      <li><a href="javascript:;" @click="dialog = true">入驻</a></li>
+      <li><a href="https://cp.ingtube.com/#/">入驻</a></li>
     </ul>
     <div class="dialog" v-if="dialog" @click.self="dialog = false">
       <h2>入驻映兔视频</h2>
